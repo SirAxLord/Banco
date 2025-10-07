@@ -7,7 +7,8 @@ use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\movimientosController;
+use App\Http\Controllers\pagosController;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -34,8 +35,8 @@ Route::middleware(['auth'])->group(function () {
         )
         ->name('two-factor.show');
     Route::get('cuentas', [AdminController::class, 'index'])->name('cuentas.index');
-    Route::get('movimientos', [AdminController::class, 'index'])->name('movimientos.index');
-    Route::get('pagos', [AdminController::class, 'index'])->name('pagos.index');
+    Route::get('movimientos', [movimientosController::class, 'index'])->name('movimientos.index');
+    Route::get('pagos', [pagosController::class, 'index'])->name('pagos.index');
 });
 
 require __DIR__.'/auth.php';
